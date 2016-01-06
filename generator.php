@@ -67,7 +67,7 @@ class PluginSystem {
 $arguments = new Arguments();
 $plugins = new PluginSystem();
 
-$plugins->executeWorkspace("arguments", $arguments);
+$plugins->executeWorkspace("arguments.cli", $arguments);
 
 print_r($arguments->getArguments());
 
