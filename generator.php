@@ -29,6 +29,8 @@ class PluginSystem {
 	private $plugins;
 
 	public function __construct (){
+		ob_start();
+
 		$dir = new DirectoryIterator(__DIR__."/plugins");
 		foreach ($dir as $fileinfo){
 			if(!$fileinfo->isDot()){
@@ -37,6 +39,8 @@ class PluginSystem {
 				require_once($fileinfo->getPathName());
 			}
 		}
+
+		ob_clean();
 	}
 
 	public function registerPlugin($workspace, $name, $priority = 0){
