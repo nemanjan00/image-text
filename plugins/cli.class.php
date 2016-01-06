@@ -11,7 +11,7 @@ class ArgumentsCli {
 
 		$commando = new Commando\Command();		
 
-		$plugins->executeWorkspace("arguments.cli.params", $commando);
+		$plugins->executeWorkspace("arguments.cli.commando", $commando);
 
 		foreach($commando->getOptions() as $key => $value){
 			$arguments->setArgument($key, $value->getValue());
@@ -19,9 +19,9 @@ class ArgumentsCli {
 	}	
 }
 
-$plugins->registerPlugin("arguments.cli.params", "ArgumentsCliParams");
+$plugins->registerPlugin("arguments.cli.commando", "ArgumentsCliCommando");
 
-class ArgumentsCliParams {
+class ArgumentsCliCommando {
 	public function __construct(&$commando, $plugins){
 		$commando->option('f')
 			->aka('force')
