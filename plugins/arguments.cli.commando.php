@@ -1,27 +1,21 @@
 <?php
-$plugins->registerPlugin("arguments.cli.commando", "ArgumentsCliCommando");
+$plugins->registerPlugin("arguments.cli", "ArgumentsCliCommando");
 
 class ArgumentsCliCommando {
-	public function __construct(&$commando, $plugins){
-		$commando->option('f')
-			->aka('force')
-			->describedAs('Force image override')
-			->boolean();
+	private $arguments;
 
-		$commando->option('s')
-			->aka('source')
-			->describedAs('Source image.')
-			->require();
+	private $commando;
 
-		$commando->option('d')
-			->aka('destination')
-			->describedAs('Destination image')
-			->require();
-			
-		$commando->option('t')
-			->aka('text')
-			->describedAs('Text inside image')
-			->require();
-	}
+	public function __construct(&$arguments, $plugins){
+		$this->arguments = $arguments;
+
+		$commando = new Commando\Command();		
+
+		$plugins->executeWorkspace("arguments.cli.commando", $commando);
+
+		foreach($commando->getOptions() as $key => $value){
+			$arguments->setArgument($key, $value->getValue());
+		}
+	}	
 }
 
