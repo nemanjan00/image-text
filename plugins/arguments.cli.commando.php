@@ -7,8 +7,6 @@ class ArgumentsCliCommando {
 	private $commando;
 
 	public function __construct(&$arguments, $plugins){
-		$this->arguments = $arguments;
-
 		$commando = new Commando\Command();		
 
 		$plugins->executeWorkspace("arguments.cli.commando", $commando);
