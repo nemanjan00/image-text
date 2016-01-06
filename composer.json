@@ -1,0 +1,16 @@
+{
+    "name": "nemanjan00/imagetext",
+    "description": "Quick tool for putting text and wathermark on images for facebook",
+    "require": {
+        "nategood/commando": "*",
+        "imagine/imagine": "^0.6.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nemanja Nedeljković",
+            "email": "nemanjan00@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
